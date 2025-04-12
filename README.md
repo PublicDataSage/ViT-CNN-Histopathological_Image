@@ -4,38 +4,83 @@ This repository contains code and experiments from the study titled:
 
 **"Fusion of Vision Transformer and Convolutional Neural Network for Explainable and Efficient Histopathological Image Classification in Cyber-Physical Healthcare Systems."**
 
-## 📌 Overview
+---
 
-This project evaluates three deep learning models—CNN, Vision Transformer (ViT), and a hybrid ViT+CNN architecture—on the BreakHis dataset for breast cancer classification. The focus is on achieving a balance between classification accuracy, computational efficiency, and deployment feasibility in cyber-physical healthcare systems.
+## 📁 Repository Structure
 
-## 🧪 Models Implemented
+This project includes two Jupyter notebooks:
 
-- **CNN**: A lightweight convolutional neural network optimized for low-latency environments.
-- **ViT**: A transformer-based model capturing global features using self-attention.
-- **ViT+CNN**: A hybrid model combining local feature extraction (CNN) and global attention (ViT).
+### `data_setup_and_preprocessing.ipynb`  
+This notebook handles all dataset preparation tasks. It guides you through:
+- Downloading the BreakHis dataset from Kaggle
+- Unzipping the dataset and locating the `Breast` folder
+- Uploading the dataset to Google Drive
+- Verifying the structure for later model training
 
-## ⚙️ Training & Evaluation
+**Use this notebook first** to ensure that your data is correctly uploaded and accessible in your Colab environment.
 
-- Dataset: BreakHis (binary classification: benign vs. malignant)
-- Loss Function: `CrossEntropyLoss`
-- Optimizer: `Adam`
-- Batch Size: 256
-- Epochs: 10
-- Metrics: Accuracy, Precision, Recall, F1-score
-- Evaluation on: `CPU`, `CPU-Edge`, `GPU`, and `GPU-Edge` scenarios
+---
 
-## 📈 Benchmarking
+### `Combined.ipynb`  
+This is the core notebook for:
+- Defining CNN, ViT, and ViT+CNN models
+- Training each model on the BreakHis dataset
+- Evaluating classification performance (accuracy, precision, recall, F1-score)
+- Applying Grad-CAM for visual explainability
+- Benchmarking latency and memory usage across CPU, GPU, and edge environments
 
-Models are benchmarked for:
-- **Inference latency** (sec/image)
-- **Memory usage** (MB)
-- Plots are generated to visualize model efficiency across deployment environments.
+**Run this notebook after setting up the dataset using the previous notebook.**
 
-## 🔍 Explainability
+---
 
-Grad-CAM is applied to provide visual explanations for CNN and ViT+CNN predictions to enhance model transparency in medical decision-making.
+## 🧾 Dataset Setup Instructions
 
-## 📁 Files
+1. Create a directory in your Google Drive (e.g., `BreakHisDataset`)
+2. Download the dataset from [Kaggle - BreakHis Dataset](https://www.kaggle.com/datasets/ambarish/breakhis)
+3. Unzip the file and locate the `Breast` folder
+4. Upload the `Breast` folder to your Google Drive directory
 
-- `Combined.ipynb`: Main notebook containing data loading, model definitions, training loop, evaluation, and benchmarking.
-- `README.md`: Project documentation.
+You will later access this directory from Colab using `drive.mount()`.
+
+---
+
+## 🧪 Models Overview
+
+- **CNN:** Lightweight, fast architecture ideal for edge devices  
+- **ViT:** Transformer-based model for global feature learning  
+- **ViT+CNN:** Fusion model that integrates local (CNN) and global (ViT) features
+
+---
+
+## ⚙️ Training Details
+
+- Loss Function: CrossEntropyLoss  
+- Optimizer: Adam  
+- Batch Size: 256  
+- Epochs: 10  
+- Evaluation after each epoch using accuracy, precision, recall, and F1-score  
+- Inference run in evaluation mode with gradient tracking disabled
+
+---
+
+## 📊 Deployment Benchmarking
+
+Each model is evaluated for:
+- Latency (seconds per image)
+- Memory usage (MB)
+
+Benchmarks are conducted under:
+- CPU
+- CPU-Edge
+- GPU
+- GPU-Edge
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/PublicDataSage/ViT-CNN-Histopathological_Image.git
+cd ViT-CNN-Histopathological_Image
