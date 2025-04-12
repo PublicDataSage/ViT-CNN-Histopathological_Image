@@ -39,11 +39,3 @@ Grad-CAM is applied to provide visual explanations for CNN and ViT+CNN predictio
 
 - `Combined.ipynb`: Main notebook containing data loading, model definitions, training loop, evaluation, and benchmarking.
 - `README.md`: Project documentation.
-- `references.bib`: (Optional) BibTeX entries for related papers.
-
-## 🚀 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/Histopathology-ViT-CNN-Fusion.git
-   cd Histopathology-ViT-CNN-Fusion
